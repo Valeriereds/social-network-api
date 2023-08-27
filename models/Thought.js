@@ -23,7 +23,13 @@ const reactionSchema = new Schema(
       type: Date,
       default: Date.now,
       get: (timestamp) => moment(timestamp).format('MMM, Do, YYYY [at] HH:MM a'),
-    }
+    },
+},
+{
+  toJSON: {
+    getters: true
+  },
+  id: false,
 });
 
 const thoughtSchema = new Schema(
