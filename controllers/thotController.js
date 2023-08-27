@@ -1,7 +1,7 @@
 const { Thought, User } = require('../models')
 
 module.exports = {
-  async getThoughts(req, res) {
+  async getAllThoughts(req, res) {
     try {
       const thoughts = await Thought.
       find();
@@ -141,4 +141,4 @@ module.exports = {
       res.status(500).json(err);
     }
   }
-}
+};
