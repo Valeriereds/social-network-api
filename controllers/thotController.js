@@ -53,7 +53,7 @@ module.exports = {
     try {
       const thought = await Thought.
       findOneAndUpdate(
-        { _id: req.params.thoughtId },
+        { _id: req.params.id },
         { $set: req.body },
         { runValidators: true, new: true }
       );
@@ -73,7 +73,7 @@ module.exports = {
   async deleteThought(req, res) {
     try {
       const thought = await Thought.
-      findOneAndRemove({ _id: req.params.thoughtId });
+      findOneAndRemove({ _id: req.params.id });
 
       if (!thought) {
         return res.status(404).json({
@@ -90,7 +90,7 @@ module.exports = {
 
       if (!user) {
         return res.status(404).json({
-          message: 'Thought created but no user with this ID'
+          message: 'Thought deleted but no user with this ID'
         });
       }
       
@@ -105,7 +105,7 @@ module.exports = {
       const thought = await Thought.
       findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $addToSet: { reactions: {reactionId: req.body } } },
+        { $addToSet: { reactions: req.body } },
         { runValidators: true, new: true }
       )
 
@@ -126,7 +126,7 @@ module.exports = {
     try {
       const thought = await Thought.
       findOneAndUpdate(
-        { _id: req.params.thoughtId },
+        { _id: req.params.reactionId },
         { $pull: { reactions: { reactionId: req.params.reactionId } } },
         { runValidators: true, new: true }
       )
