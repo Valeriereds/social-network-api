@@ -14,8 +14,8 @@ module.exports = {
   async getSingleThought(req, res) {
     try {
       const thought = await Thought.
-      findOne({ _id: req.params.thoughtId });
-
+      findOne({ _id: req.params.id });
+      console.log(thought);
       if (!thought) {
         return res.status(404).json({
           message: 'No thought with that ID'
@@ -105,7 +105,7 @@ module.exports = {
       const thought = await Thought.
       findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $pull: { reactions: {reactionId: req.params.reactionId } } },
+        { $addToSet: { reactions: {reactionId: req.body } } },
         { runValidators: true, new: true }
       )
 
