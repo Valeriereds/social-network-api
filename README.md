@@ -6,6 +6,8 @@ This Social Network API was made to test my ever-growing knowledge on NOSQL, ins
 
 ## Usage
 
+https://drive.google.com/file/d/1x2lgu0Y-mUX7Xl03MRHe91rxET_IRX1f/view
+
 To test the application, simply type "npm install" into the integrated terminal, then "npm start" or "node index.js" to start the server. Then open insomnia to test the routes! Happy Coding!
 
 ## License
